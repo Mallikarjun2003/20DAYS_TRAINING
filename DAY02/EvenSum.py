@@ -8,3 +8,4 @@ a =range(1,11)
 even=0
 res = (even_sum(even,0,len(a)))
 print(res)
+
