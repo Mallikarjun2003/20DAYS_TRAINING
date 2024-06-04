@@ -1,11 +1,3 @@
-# 4
-# abcd
-# xyze
-# pqrw
-# stuv
-
-# "cyptdzsayq"
-# op:NO
 from collections import Counter
 nu=int(input())
 l=[]
@@ -18,9 +10,8 @@ count ={}
 for i in l:
     count[i] = Counter(i)
 for i in range(len(ch)):
-    if i in l[r] and count[l[r]][i]:
-        count[l[]]
-        r=(r+1)%nu
+    if ch[i] in l[i%nu] and count[l[i%nu]][ch[i]]:
+        count[l[i%nu]][ch[i]]-=1
     else:
         no=1
         break
@@ -28,7 +19,3 @@ if no:
     print("NO")
 else:
     print("YES")
-    
-    
-
-    
