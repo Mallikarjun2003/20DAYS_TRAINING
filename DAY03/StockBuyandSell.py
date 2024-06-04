@@ -1,5 +1,5 @@
 nums = list(map(int,input().split()))
-l,r = 0,0
+l,r = 0,1
 n = len(nums)
 max_profit = 0
 while r<n:
