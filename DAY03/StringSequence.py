@@ -6,6 +6,7 @@
 
 # "cyptdzsayq"
 # op:NO
+from collections import Counter
 nu=int(input())
 l=[]
 for i in range(nu):
@@ -13,9 +14,12 @@ for i in range(nu):
 ch=input()
 r=0
 no=0
-for i in ch:
-    if i in l[r]:
-        r=(r+1)%nu
+count ={}
+for i in l:
+    count[i] = Counter(i)
+for i in range(len(ch)):
+    if ch[i] in l[i%nu] and count[l[i%nu]][ch[i]]:
+        count[l[i%nu]][ch[i]]-=1
     else:
         no=1
         break
