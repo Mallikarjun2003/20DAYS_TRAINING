@@ -84,7 +84,7 @@ class sll:
                 return node1.data == node2.data
             return node1.data == node2.data and check(node1 ,node2.next)
         return check(self.head,self.head)
- def bubble(self):
+    def bubble(self):
         c = 0
         T =self.head
         p = None
@@ -127,3 +127,4 @@ print(l1.max_subsequence())
 # l1.bubble_sort()
 l1.display()
 print(l1.palindrome())
+l1.bubble()
