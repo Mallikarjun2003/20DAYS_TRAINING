@@ -42,14 +42,56 @@ class sll:
                 print((t1.data,t2.data),end=" ")
                 t2 = t2. next
             t1 = t1.next
-
+        print()
+    def even_or_odd_len(self):
+        slow =fast = self.head
+        count = 0
+        while fast!= None and fast.next != None:
+            fast = fast.next.next
+            slow = slow.next
+            count +=2
+        if fast:
+            count +=1
+        print(count %2)
+    def max_subsequence(self):
+        curr = self.head
+        next = curr.next
+        max_count = 0
+        count = 1
+        while next != None :
+            if next.data - curr.data ==1:
+                count +=1 
+                next = next.next
+                curr = curr.next
+            else:
+                max_count = max(max_count , count)
+                curr = next
+                next = next.next
+                count = 1
+        return max(count , max_count)
+    def bubble_sort(self):
+        t1 = self.head
+        while t1!= None:
+            t2 = t1
+            while t2 != None:
+                if t1.data < t2.data:
+                    t1.data ,t2.data= t2.data, t1.data
+                t2 = t2. next
+            t1 = t1.next
+        
+            
 l1 = sll(10)
 l2 = sll(50)
-l1.add_back(12)
-l1.add_back(14)
-l1.add_back(16)
-l1.add_back(18)
-l1.add_back(20)
+l1.add_back(1)
+l1.add_back(2)
+l1.add_back(3)
+l1.add_back(4)
+l1.add_back(7)
+l1.add_back(8)
+l1.add_back(9)
+l1.add_back(3)
+l1.add_back(4)
+l1.add_back(5)
 l1.display()
 l2.add_front(22)
 l2.add_front(2243)
@@ -57,8 +99,12 @@ l2.add_back(12)
 l2.add_back(14)
 l2.add_back(16)
 l2.add_back(18)
-l2.add_back(20)
 l2.display()
-print(l1.search_ele(15612))
-l1.middle_node()
-l1.all_pairs()
+# print(l1.search_ele(15612))
+# l1.middle_node()
+# l1.all_pairs()
+# l1.even_or_odd_len()
+# l2.even_or_odd_len()
+print(l1.max_subsequence())
+l1.bubble_sort()
+l1.display()
