@@ -78,20 +78,22 @@ class sll:
                     t1.data ,t2.data= t2.data, t1.data
                 t2 = t2. next
             t1 = t1.next
-        
+    def palindrome(self):
+        def check(node1,node2):
+            if not node2.next:
+                return node1.data == node2.data
+            return node1.data == node2.data and check(node1 ,node2.next)
+        return check(self.head,self.head)
+
+    
             
-l1 = sll(10)
+l1 = sll(1)
 l2 = sll(50)
-l1.add_back(1)
 l1.add_back(2)
 l1.add_back(3)
-l1.add_back(4)
-l1.add_back(7)
-l1.add_back(8)
-l1.add_back(9)
 l1.add_back(3)
-l1.add_back(4)
-l1.add_back(5)
+l1.add_back(2)
+l1.add_back(1)
 l1.display()
 l2.add_front(22)
 l2.add_front(2243)
@@ -106,5 +108,6 @@ l2.display()
 # l1.even_or_odd_len()
 # l2.even_or_odd_len()
 print(l1.max_subsequence())
-l1.bubble_sort()
+# l1.bubble_sort()
 l1.display()
+print(l1.palindrome())
