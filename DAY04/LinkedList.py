@@ -84,7 +84,23 @@ class sll:
                 return node1.data == node2.data
             return node1.data == node2.data and check(node1 ,node2.next)
         return check(self.head,self.head)
-
+ def bubble(self):
+        c = 0
+        T =self.head
+        p = None
+        while (T.next != None):
+            f = 0
+            t = self.head
+            while t.nxt is not p:
+                if t.data > t.next.data:
+                    f =1
+                    t.data,t.next.data = t.next.data,t.data
+                t= t.next
+                c +=1
+            if not f:
+                break
+        p = t
+        T = T.next
     
             
 l1 = sll(1)
