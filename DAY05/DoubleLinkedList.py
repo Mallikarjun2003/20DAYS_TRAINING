@@ -73,19 +73,33 @@ class Dll:
                 head = head.next
                 tail = tail.next
             print("palindrome")
+        def transfer(self):
+             slow = self.head
+             fast = self.head
+             while fast and fast.next:
+                  fast = fast.next.next
+                  slow = slow.next
+             n1 = slow.prev
+             n2= slow
+             head = self.head
+             while slow:
+                  head.data ,slow.data = slow.data,head.data
+                  head= head.next
+                  slow = slow.next
+            
+     
                       
 dll = Dll()
 inp = int(input())
 while inp != -1:
-    if inp%2 :
-          dll.addback(inp)
-    else:
-         dll.addfront(inp)
+    dll.addback(inp)
     inp = int(input())
-dll.display()         
-dll.linear_search(5) 
-dll.lin_search(34)
-dll.length()             
-dll.checkpal()            
-                  
-                  
+# dll.display()         
+# dll.linear_search(5) 
+# dll.lin_search(34)
+# dll.length()             
+# dll.checkpal()            
+dll.display()
+dll.transfer()
+print()
+dll.display()
