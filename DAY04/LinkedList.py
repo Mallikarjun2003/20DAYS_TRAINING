@@ -91,7 +91,7 @@ class sll:
         while (T.next != None):
             f = 0
             t = self.head
-            while t.nxt is not p:
+            while t.next is not p:
                 if t.data > t.next.data:
                     f =1
                     t.data,t.next.data = t.next.data,t.data
@@ -101,15 +101,23 @@ class sll:
                 break
         p = t
         T = T.next
-    
-            
+    def reverse_list(self):
+        prev = self.head
+        temp = prev.next
+        prev.next = None
+        c = temp.next
+        while c is not None:
+            c = temp.next
+            temp.next = prev
+            prev = temp
+            temp = c 
 l1 = sll(1)
 l2 = sll(50)
 l1.add_back(2)
 l1.add_back(3)
-l1.add_back(3)
-l1.add_back(2)
-l1.add_back(1)
+l1.add_back(4)
+l1.add_back(5)
+l1.add_back(6)
 l1.display()
 l2.add_front(22)
 l2.add_front(2243)
@@ -128,3 +136,5 @@ print(l1.max_subsequence())
 l1.display()
 print(l1.palindrome())
 l1.bubble()
+l1.reverse_list()
+l1.display()
