@@ -26,7 +26,7 @@ class Dll:
      def display(self):
           t= self.head
           while t:
-               print(t.data,end="")
+               print(t.data,end=" ")
                t =t.next
      def linear_search(self,data):
           t =self.head
@@ -120,14 +120,27 @@ class Dll:
                index+=1     
                temp =temp.next
           return -1
-
-
+     def even_odd_diff(self):
+          def recur(node, even, odd):
+               if not node:
+                    return abs(even - odd)
+               if node.data % 2:
+                    val = node.data
+                    res =recur(node.next, even, odd + node.data)
+                    # print(res ,val)
+                    return res
+               else:
+                    val = node.data
+                    res = recur(node.next, even + node.data, odd)
+                    # print(res,val)
+                    return res
+          return recur(self.head, 0, 0)
                
 dll = Dll()
-inp = input()
-while inp != '-1':
+inp = int(input())
+while inp != -1:
     dll.addback(inp)
-    inp = input()
+    inp = int(input())
 # dll.display()         
 # dll.linear_search(5) 
 # dll.lin_search(34)
@@ -139,9 +152,10 @@ while inp != '-1':
 # dll.display()
 # dll.head= dll.swap_pairs()
 dll.display()
-res = dll.validparanthesis()
 print()
-print(res)
+# res = dll.validparanthesis()
+# print()
+# print(res)
 """
 (
 (
@@ -157,3 +171,4 @@ print(res)
 """
 
 """
+print(dll.even_odd_diff())
