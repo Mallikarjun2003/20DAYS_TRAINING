@@ -111,30 +111,41 @@ class sll:
             temp.next = prev
             prev = temp
             temp = c 
-l1 = sll(1)
-l2 = sll(50)
+    def swap_pairs(self):
+        if not self.head or not self.head.next:
+            return self.head
+        dummy = Node(0)
+        prev = dummy
+        dummy.next = self.head
+        curr = self.head
+        while curr and curr.next:
+            f ,s = curr.next ,curr.next.next
+            f.next = curr
+            curr.next =s
+            prev.next = f
+            
+            prev = curr
+            curr =curr.next
+        return dummy.next   
+l1 = sll(5)
+l1.add_back(7)
+l1.add_back(8)
 l1.add_back(2)
-l1.add_back(3)
+l1.add_back(1)
 l1.add_back(4)
-l1.add_back(5)
-l1.add_back(6)
-l1.display()
-l2.add_front(22)
-l2.add_front(2243)
-l2.add_back(12)
-l2.add_back(14)
-l2.add_back(16)
-l2.add_back(18)
-l2.display()
+# l1.display()
+
 # print(l1.search_ele(15612))
 # l1.middle_node()
 # l1.all_pairs()
 # l1.even_or_odd_len()
 # l2.even_or_odd_len()
-print(l1.max_subsequence())
+# print(l1.max_subsequence())
 # l1.bubble_sort()
+# l1.display()
+# print(l1.palindrome())
+# l1.bubble()
+# l1.reverse_list()
 l1.display()
-print(l1.palindrome())
-l1.bubble()
-l1.reverse_list()
+l1.head = l1.swap_pairs()
 l1.display()
