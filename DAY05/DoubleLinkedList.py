@@ -26,7 +26,7 @@ class Dll:
      def display(self):
           t= self.head
           while t:
-               print(t.data,end="->")
+               print(t.data,end="")
                t =t.next
      def linear_search(self,data):
           t =self.head
@@ -103,23 +103,57 @@ class Dll:
                prev = curr
                curr =curr.next
           return dummy.next
-     
+     def validparanthesis(self):
+          stack = []
+          to_open = {']':'[' ,')':"(", "}" :"{"}
+
+          temp = self.head
+          index = 0
+          while temp:
+               if temp.data in to_open:
+                    if not stack or stack[-1] != to_open[temp.data]:
+                         return index
+                    else:
+                         stack.pop()
+               else:
+                    stack.append(temp.data)
+               index+=1     
+               temp =temp.next
+          return -1
 
 
                
 dll = Dll()
-inp = int(input())
-while inp != -1:
+inp = input()
+while inp != '-1':
     dll.addback(inp)
-    inp = int(input())
+    inp = input()
 # dll.display()         
 # dll.linear_search(5) 
 # dll.lin_search(34)
 # dll.length()             
 # dll.checkpal()            
+# dll.display()
+# dll.transfer()
+# print()
+# dll.display()
+# dll.head= dll.swap_pairs()
 dll.display()
-dll.transfer()
+res = dll.validparanthesis()
 print()
-dll.display()
-dll.head= dll.swap_pairs()
-dll.display()
+print(res)
+"""
+(
+(
+[
+{
+}
+]
+)
+)
+-1
+"""
+
+"""
+
+"""
