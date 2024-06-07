@@ -125,17 +125,28 @@ class Dll:
                if not node:
                     return abs(even - odd)
                if node.data % 2:
-                    val = node.data
                     res =recur(node.next, even, odd + node.data)
-                    # print(res ,val)
                     return res
                else:
-                    val = node.data
                     res = recur(node.next, even + node.data, odd)
-                    # print(res,val)
                     return res
           return recur(self.head, 0, 0)
-               
+     def count_primes(self):
+          def prime_check(num,idx):
+               if num <2:
+                    return False
+               if idx > int(num)**0.5:
+                    return True
+               if num %idx == 0:
+                    return False
+               return prime_check(num , idx+1)
+          def count(node,c):
+               if not node:
+                    return c
+               if prime_check(node.data,2):
+                    c +=1
+               return count(node.next , c)
+          return count(self.head,0)         
 dll = Dll()
 inp = int(input())
 while inp != -1:
@@ -171,4 +182,5 @@ print()
 """
 
 """
-print(dll.even_odd_diff())
+# print(dll.even_odd_diff())
+print(dll.count_primes())
