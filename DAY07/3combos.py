@@ -17,7 +17,6 @@ def combine(n, k):
             comb.append(nums[num])
             backtrack(num + 1)
             comb.pop()
-            backtrack(num+1)
     backtrack(0)
     return res
 print(combine(n,3))
