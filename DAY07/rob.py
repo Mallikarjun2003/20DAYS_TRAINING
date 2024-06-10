@@ -1,13 +1,6 @@
 nums = [13,9,4,10,5,7]
 n = len(nums)
-# i = 2
-# dp =[0]*(n)
-# dp[0] = nums[0]
-# dp[1] = max(nums[1],nums[0])
 
-# for i in range(2,n):
-#     dp[i] = max(dp[i-2]+nums[i] , dp[i-1])
-# print(dp[n-1])
 res = []
 
 def recur(idx,maxi_rob):
