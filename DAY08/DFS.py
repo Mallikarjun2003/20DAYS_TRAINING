@@ -16,7 +16,7 @@ matrix = []
 n = int(input())
 for i in range(n):
     matrix.append(list(map(int,input().split())))
-start_row = int(input())
+start_row = int(input()) -1
 start_col = int(input()) -1
 rows = len(matrix[0])
 dir = [(-1,0) ,(0,-1),(1,0),(0,1)]
