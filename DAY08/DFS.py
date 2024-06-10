@@ -26,14 +26,14 @@ def dfs(r,c,matrix):
         return
     elif (r,c) not in visited:
         if matrix[r][c]:
-            print((r,c))
+            # print((r,c))
             matrix[r][c] = 0
             for dx ,dy in dir:
                 dfs(r+dx, c+dy,matrix)
 dfs(start_row,start_col,matrix)
 res = 0
-for row in matrix:
-    print(*row)
+# for row in matrix:
+#     print(*row)
 for row in matrix:
    res += sum(row)
 print(res)        
