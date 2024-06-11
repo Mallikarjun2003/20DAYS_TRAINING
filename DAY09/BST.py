@@ -63,12 +63,15 @@ class BST:
                 odd += node.data
                 even_odd(node.left)
                 even_odd(node.right)
+
             else:
                 even += node.data
                 even_odd(node.left)
                 even_odd(node.right)
+
         even_odd(self.root)
-        print(abs(even - odd))
+        print("even=" ,even)
+        # print(odd)
     def sum_of_nodes(self):
         sum = 0
         def traverse(root):
@@ -80,13 +83,26 @@ class BST:
             return sum
         sum = traverse(self.root)
         print(sum)
+    
+    def level_order(self):
+        if self.root:
+            queue = [self.root]
+            while queue:
+                node = queue.pop(0)
+                print(node.data,end=" ")
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
 
 bst = BST()
-nums = [4, 2, 9, 5]
+nums = [4, 2, 9, 5,3,6,8]
 for i in nums:
     bst.insert(i)
 bst.in_order()
-bst.pre_order()
-bst.post_order()
-# bst.even_odd_diff()
-bst.sum_of_nodes()
+# bst.pre_order()
+# bst.post_order()
+bst.even_odd_diff()
+# bst.sum_of_nodes()
+# bst.level_order()
