@@ -69,6 +69,17 @@ class BST:
                 even_odd(node.right)
         even_odd(self.root)
         print(abs(even - odd))
+    def sum_of_nodes(self):
+        sum = 0
+        def traverse(root):
+            nonlocal sum
+            if root:
+                sum += root.data
+                traverse(root.left)
+                traverse(root.right)
+            return sum
+        sum = traverse(self.root)
+        print(sum)
 
 bst = BST()
 nums = [4, 2, 9, 5]
@@ -77,4 +88,5 @@ for i in nums:
 bst.in_order()
 bst.pre_order()
 bst.post_order()
-bst.even_odd_diff()
+# bst.even_odd_diff()
+bst.sum_of_nodes()
