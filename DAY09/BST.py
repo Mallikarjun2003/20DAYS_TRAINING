@@ -71,7 +71,19 @@ class BST:
 
         even_odd(self.root)
         print("even=" ,even)
-        # print(odd)
+        print("odd=",odd)
+        print("diff=" , abs(even - odd))
+    
+    def height(self, node):
+        if not node:
+            return 0
+        return 1 + max(self.height(node.left), self.height(node.right))
+
+    def is_balanced(self, node):
+        if not node:
+            return True
+        return self.height(node.left) == self.height(node.right)
+        
     def sum_of_nodes(self):
         sum = 0
         def traverse(root):
@@ -100,9 +112,13 @@ bst = BST()
 nums = [4, 2, 9, 5,3,6,8]
 for i in nums:
     bst.insert(i)
-bst.in_order()
-# bst.pre_order()
-# bst.post_order()
-bst.even_odd_diff()
+# bst.in_order()
+# # bst.pre_order()
+# # bst.post_order()
+# bst.even_odd_diff()
 # bst.sum_of_nodes()
 # bst.level_order()
+root_height = bst.height(bst.root)
+print(root_height)
+is_bal =bst.is_balanced(bst.root)
+print(is_bal)
