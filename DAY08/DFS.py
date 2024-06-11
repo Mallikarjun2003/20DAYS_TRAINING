@@ -21,7 +21,9 @@ start_col = int(input()) -1
 rows = len(matrix[0])
 dir = [(-1,0) ,(0,-1),(1,0),(0,1)]
 visited =set()
+
 def dfs(r,c,matrix):
+    
     if r >= n or c>=n or c < 0 or r<0 or matrix[r][c] == 0:
         return
     elif (r,c) not in visited:
