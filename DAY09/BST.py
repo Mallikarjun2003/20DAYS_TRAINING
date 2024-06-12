@@ -174,29 +174,28 @@ class BST:
             right_view.append(depth_map[d][-1])
         
     def top_view(self):
-        def traverse_left(node):
-            if not node:
-                return
-            traverse_left(node.left)
-            print(node.data,end=" ")
-        def traverse_right(node):
-            if node:
-                traverse_right(node.right)
-                print(node.data,end="")
-        traverse_left(self.root)
-        traverse_right(self.root.right)
-
-    def down_view(self):
         vertical_level=defaultdict(Node)
-        def down_level(node,d):
+        def top_level(node,d):
             if node:
-                down_level(node.right,d+1)
-                down_level(node.left,d-1)
-                if d not in vertical_level:
-                    vertical_level[d] =node
-        down_level(self.root,0)
+                top_level(node.left,d-1)
+                top_level(node.right,d+1)
+                vertical_level[d] =node
+        top_level(self.root,0)
         for level in vertical_level:
             print(vertical_level[level].data,end=" ")
+
+    def down_view(self):
+        def recur(root, v):
+            if root == None:
+                return
+            dic[v] = root.data
+            recur(root.left, v-1)
+            recur(root.right, v+1)
+        dic = {}
+        recur(self.root, 0)
+        sorted_levels=sorted(dic.keys())
+        for i in sorted_levels:
+            print(dic[i], end=' ')
 
     def left_view(self):
         level_wise = self.depth()
@@ -209,10 +208,10 @@ class BST:
         level_wise = self.depth()
         # print(level_wise)
         for level in level_wise:
-            print(level_wise[level].data,end=" ")
+            print(level_wise[level][-1].data,end=" ")
 
 bst = BST()
-nums = [10,5,15,2,7,11,20,3,21,22]
+nums = [10,5,15,2,7,11,20,4,12,3,13,14]
 for i in nums:
     bst.insert(i)
 # bst.in_order()
@@ -230,11 +229,11 @@ for i in nums:
 # bst.search(int(input()))
 # data =int(input())
 # print(f"DEPTH of {data} = ",bst.depth(data))
-# print("TOP VIEW \n")
-# bst.top_view()
-# print("\nDOWN VIEW")
+print("TOP VIEW \n")
+bst.top_view()
+print("\nDOWN VIEW")
 bst.down_view()
-# print("\nLEFT VIEW ")
-# bst.left_view()
-# print("RIGHT VIEW")
-# bst.right_view()
+print("\nLEFT VIEW ")
+bst.left_view()
+print("RIGHT VIEW")
+bst.right_view()
