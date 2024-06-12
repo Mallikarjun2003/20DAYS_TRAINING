@@ -187,17 +187,17 @@ class BST:
         traverse_right(self.root.right)
 
     def down_view(self):
-        vertical_level=defaultdict(list)
+        vertical_level=defaultdict(Node)
         def down_level(node,d):
             if node:
-                down_level(node.left,d-1)
-                vertical_level[d].append(node)
                 down_level(node.right,d+1)
+                down_level(node.left,d-1)
+                if d not in vertical_level:
+                    vertical_level[d] =node
         down_level(self.root,0)
         for level in vertical_level:
-            print(level,vertical_level[level][0].data)
-                      
-        
+            print(vertical_level[level].data,end=" ")
+
     def left_view(self):
         level_wise = self.depth()
         # print(level_wise)
@@ -209,10 +209,10 @@ class BST:
         level_wise = self.depth()
         # print(level_wise)
         for level in level_wise:
-            print(level_wise[level][-1].data,end=" ")
+            print(level_wise[level].data,end=" ")
 
 bst = BST()
-nums = [10,15,5,7,2,1,3]
+nums = [10,5,15,2,7,11,20,3,21,22]
 for i in nums:
     bst.insert(i)
 # bst.in_order()
