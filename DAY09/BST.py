@@ -150,7 +150,7 @@ class BST:
         else:
             print(data,"not found")
     
-    def depth(self,data):
+    def depth(self):
         depth_map = defaultdict(list)
         
         queue = [(self.root,0)]
@@ -166,14 +166,50 @@ class BST:
         #         if node.data == data:
         #             return i
         # return -1
-        left_view =[]
-        down_view =[]
-        top_view ,right_view=[],[]
+        return depth_map
+        # left_view =[]
+        # right_view=[]
         for d in depth_map:
             left_view.append(depth_map[d][0])
             right_view.append(depth_map[d][-1])
         
+    def top_view(self):
+        def traverse_left(node):
+            if not node:
+                return
+            traverse_left(node.left)
+            print(node.data,end=" ")
+        def traverse_right(node):
+            if node:
+                traverse_right(node.right)
+                print(node.data,end="")
+        traverse_left(self.root)
+        traverse_right(self.root.right)
 
+    def down_view(self):
+        vertical_level=defaultdict(list)
+        def down_level(node,d):
+            if node:
+                down_level(node.left,d-1)
+                vertical_level[d].append(node)
+                down_level(node.right,d+1)
+        down_level(self.root,0)
+        for level in vertical_level:
+            print(level,vertical_level[level][0].data)
+                      
+        
+    def left_view(self):
+        level_wise = self.depth()
+        # print(level_wise)
+        for level in level_wise:
+            print(level_wise[level][0].data,end=" ")
+        print()
+    def right_view(self):
+        print()
+        level_wise = self.depth()
+        # print(level_wise)
+        for level in level_wise:
+            print(level_wise[level][-1].data,end=" ")
 
 bst = BST()
 nums = [10,15,5,7,2,1,3]
@@ -185,12 +221,20 @@ for i in nums:
 # bst.even_odd_diff()
 # bst.sum_of_nodes()
 # bst.level_order()
-root_height = bst.height(bst.root)
-print(root_height)
-is_bal =bst.is_balanced(bst.root)
-print(is_bal)
-bst.leaves()
-bst.leaves_sum()
-bst.search(int(input()))
-data =int(input())
-print(f"DEPTH of {data} = ",bst.depth(data))
+# root_height = bst.height(bst.root)
+# print(root_height)
+# is_bal =bst.is_balanced(bst.root)
+# print(is_bal)
+# bst.leaves()
+# bst.leaves_sum()
+# bst.search(int(input()))
+# data =int(input())
+# print(f"DEPTH of {data} = ",bst.depth(data))
+# print("TOP VIEW \n")
+# bst.top_view()
+# print("\nDOWN VIEW")
+bst.down_view()
+# print("\nLEFT VIEW ")
+# bst.left_view()
+# print("RIGHT VIEW")
+# bst.right_view()
