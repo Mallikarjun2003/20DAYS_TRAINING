@@ -1,5 +1,15 @@
-# [4,9,8,2,14,3,5,6]
-# (4,9,8),(9,8,2),(14,3,5),(3,5,6) ...
+# // 3 pointer decoy sorting
+"""
+    8                                                                                          
+    4 9 8 2 14 3 5 6
+    4 8 9
+      2 8 9
+        8 9 14
+          3 9 14
+            5 9 14
+              6 9 14
+    4 2 8 3 5 6 9 14
+"""
 #op:[4, 2, 8, 3, 5, 6, 9, 14]
 # unsorted array 
 # take the 3 pairs and arrange in the ascending order
