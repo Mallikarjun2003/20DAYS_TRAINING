@@ -7,7 +7,7 @@
 # all the ele in arr are non prime and in increasing order
 # take pair of elements each time and find the largest prime in that range
 #sum of all the primes is the op
-nums = [4,8,14,22,36,68]
+nums = [14,16,20,22]
 sum = 0
 def prime(num1,num2):
     for num in range(num2,num1,-1):
@@ -18,7 +18,7 @@ def prime(num1,num2):
         if not found:
             print(num)
             return num
-    return -1
+    return 0
 for i in range(len(nums)-1):
     sum+=prime(nums[i],nums[i+1])
 print(sum)
