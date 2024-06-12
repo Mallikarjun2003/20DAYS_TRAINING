@@ -161,11 +161,19 @@ class BST:
                 queue.append((node.left,d+1))
             if node.right:
                 queue.append((node.right,d+1))
-        for i in depth_map:
-            for node in depth_map[i]:
-                if node.data == data:
-                    return i
-        return -1
+        # for i in depth_map:
+        #     for node in depth_map[i]:
+        #         if node.data == data:
+        #             return i
+        # return -1
+        left_view =[]
+        down_view =[]
+        top_view ,right_view=[],[]
+        for d in depth_map:
+            left_view.append(depth_map[d][0])
+            right_view.append(depth_map[d][-1])
+        
+
 
 bst = BST()
 nums = [10,15,5,7,2,1,3]
