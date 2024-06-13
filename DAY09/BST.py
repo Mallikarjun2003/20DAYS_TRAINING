@@ -203,6 +203,7 @@ class BST:
             
         for level in sorted(vertical_level.keys()):
             print(vertical_level[level][-1].data,end=" ")
+            
     def left_view(self):
         level_wise = self.depth()
         # print(level_wise)
