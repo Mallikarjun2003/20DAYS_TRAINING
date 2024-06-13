@@ -172,31 +172,37 @@ class BST:
         for d in depth_map:
             left_view.append(depth_map[d][0])
             right_view.append(depth_map[d][-1])
-        
     def top_view(self):
-        vertical_level=defaultdict(Node)
-        def top_level(node,d):
-            if node:
-                top_level(node.left,d-1)
-                top_level(node.right,d+1)
-                vertical_level[d] =node
-        top_level(self.root,0)
-        for level in vertical_level:
-            print(vertical_level[level].data,end=" ")
+        from collections import deque
+        vertical_level=defaultdict(list)
+        queue = deque([(self.root,0)])
+        
+        while queue:
+            n,d = queue.popleft()
+            vertical_level[d].append(n)
+            if n.left:
+                queue.append((n.left,d-1))
+            if n.right:
+                queue.append((n.right,d+1))
+            
+        for level in sorted(vertical_level.keys()):
+            print(vertical_level[level][0].data,end=" ")
 
     def down_view(self):
-        def recur(root, v):
-            if root == None:
-                return
-            dic[v] = root.data
-            recur(root.left, v-1)
-            recur(root.right, v+1)
-        dic = {}
-        recur(self.root, 0)
-        sorted_levels=sorted(dic.keys())
-        for i in sorted_levels:
-            print(dic[i], end=' ')
-
+        from collections import deque
+        vertical_level=defaultdict(list)
+        queue = deque([(self.root,0)])
+        
+        while queue:
+            n,d = queue.popleft()
+            vertical_level[d].append(n)
+            if n.left:
+                queue.append((n.left,d-1))
+            if n.right:
+                queue.append((n.right,d+1))
+            
+        for level in sorted(vertical_level.keys()):
+            print(vertical_level[level][-1].data,end=" ")
     def left_view(self):
         level_wise = self.depth()
         # print(level_wise)
