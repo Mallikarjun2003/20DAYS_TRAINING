@@ -13,15 +13,5 @@ dp = [[float("inf")]*(target+1) for _ in range(len(arr) + 1)]
 # for row in dp:
 #     print(*row)
 
-one_dp = [float("inf")]*(target+1)
-one_dp[0] = 0
-for i in arr:
-    one_dp[i] = 1
-for i in range(1,target+1):
-    if i in arr:
-        one_dp[i] = min(one_dp[i], 1+one_dp[target-i])
-    else:
-        one_dp[i] = one_dp[i-1]
-print(one_dp)
 
 

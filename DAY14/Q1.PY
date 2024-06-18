@@ -1,6 +1,6 @@
 # ip : [2,5,2,3,6,7,1,0,5] op :14
 # ip:[2,5,2,3,6,7,1,0,5,7] op :20
-buildings = [2,5,2,3,6,7,1,0,5,7]
+buildings = [4,3,4,5,6,1,0,6,7]
 n = len(buildings)
 left_max_building = [0]*n
 right_max_building = [0]*n
