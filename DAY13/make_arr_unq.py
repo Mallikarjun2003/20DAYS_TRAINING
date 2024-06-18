@@ -1,26 +1,53 @@
-def min_operations_to_permutation(arr):
-    n = len(arr)
-    freq = [0] * (n + 1)
-    missing = []
-    result = arr[:]
-    for num in arr:
-        if 1 <= num <= n:
-            freq[num] += 1
-    for i in range(1, n + 1):
-        if freq[i] == 0:
-            missing.append(i)
-    j = 0
-    used = set()
-    for i in range(n):
-        if arr[i] in used or arr[i] > n or freq[arr[i]] > 1:
-            if j < len(missing):
-                if arr[i] <= n:
-                    freq[arr[i]] -= 1
-                result[i] = missing[j]
-                j += 1
-        else:
-            used.add(arr[i])
+from collections import defaultdict
+arr = [4, 4, 4,4 ]
+freq = defaultdict(int)
+n = len(arr)
+for i in arr:
+    freq[i] += 1
+operations = 0
+for idx,ele in enumerate(arr):
+    if freq[ele] > 1:
+        missing = 0
+        for i in range(1,n+1):
+            if not freq[i]:
+                missing = i
+                break
+        if missing:
+            freq[ele]-=1
+            freq[missing] +=1
+        arr[idx] = missing
+        operations += abs(ele - missing)
+print(arr)
+print(operations)
+
+
+# from collections import defaultdict
+
+# def transform_array(arr):
+#     n = len(arr)
+#     freq = defaultdict(int)
     
-    return result
-arr = [4, 4, 3, 3]
-print(min_operations_to_permutation(arr))
+#     # Count the frequency of each element in the array
+#     for num in arr:
+#         freq[num] += 1
+    
+#     # Track the missing numbers from 1 to n
+#     missing = [i for i in range(1, n+1) if freq[i] == 0]
+#     missing_idx = 0
+
+#     # Perform the transformation
+#     for i in range(n):
+#         if freq[arr[i]] > 1:
+#             freq[arr[i]] -= 1
+#             arr[i] = missing[missing_idx]
+#             freq[missing[missing_idx]] += 1
+#             missing_idx += 1
+    
+#     return arr
+
+# # Test the function with the example given in the problem
+# arr = [4, 4, 4, 4]
+# result = transform_array(arr)
+# print(result)
+
+    
