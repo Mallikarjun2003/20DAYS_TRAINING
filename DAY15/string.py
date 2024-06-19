@@ -13,16 +13,14 @@ for j in s2:
         dig.add(int(j))
 dig = sorted(list(dig),reverse= True)
 min_even = float("inf")
-min_odd = float("inf")
+
 for i in dig:
     if i %2 == 0:
         min_even = min(min_even,i)
-    elif i %2:
-        min_odd = min(min_odd,i)
 dig.remove(min_even)
-dig.remove(min_odd)
+
 res =""
 for i in dig:
     res += str(i)
-res+=str(min_odd)+str(min_even)
+res+=str(min_even)
 print(res)
