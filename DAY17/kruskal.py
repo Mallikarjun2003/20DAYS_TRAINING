@@ -2,9 +2,9 @@ graph = {
     5 : [(2,2) , (3,2), (8,2)],
     2 : [(5,2), (3,1)] ,
     3 : [(2,1) ,(8,3) ,(5,2),(7,3)],
-    7 : [(3,3) , (9,1)],
-    9 :[(6,2),(4,2),(7,1)],
     8 :[(5,2),(6,4),(3,3)],
+    9 :[(6,2),(4,2),(7,1)],
+    7 : [(3,3) , (9,1)],
     6 :[(9,2),(8,4)],
     4 :[(9,2)]
 }
@@ -25,8 +25,10 @@ while len(visited) != 8:
     for i in range(len(edges)):
         cost,st,end = edges[i]
         if st in visited and  end not in visited:
+            print((st,end))
             visited_edges[st].append(end)
             path.append((st,end))
             visited.add(end)
-print(visited_edges)
+            break
+# print(visited_edges)
 # print(path)
